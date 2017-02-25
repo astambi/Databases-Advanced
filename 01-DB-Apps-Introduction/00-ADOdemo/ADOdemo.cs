@@ -19,14 +19,14 @@ namespace ADOdemo
 
             using (connection)
             {
-                //SqlCommand ExecuteScalar
+                //SqlCommand ExecuteScalar => single result
                 string query = "SELECT COUNT(*) FROM Employees";
                 SqlCommand command = new SqlCommand(query, connection);
                 int employeesCount = (int)command.ExecuteScalar();
 
                 Console.WriteLine("Employees count: {0}", employeesCount);
 
-                //SqlDataReader
+                //SqlDataReader => table, select
                 Console.Write("Enter employeeId: ");
                 int employeeId = int.Parse(Console.ReadLine());
 
@@ -50,7 +50,7 @@ namespace ADOdemo
                     }
                 }
 
-                // ExecuteNonQuery
+                // ExecuteNonQuery => insert, update, delete
                 Console.Write("Enter townName to be inserted: ");
                 string townName = Console.ReadLine();
 
@@ -62,7 +62,7 @@ namespace ADOdemo
 
                 // ExecuteNonQuery + Prevent SQL Injection
                 Console.Write("Enter TownName to delete: ");
-                string townNameToDel = Console.ReadLine();                
+                string townNameToDel = Console.ReadLine();
 
                 query = $"DELETE FROM Towns WHERE Name LIKE @townName";
                 command = new SqlCommand(query, connection);

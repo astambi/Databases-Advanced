@@ -24,10 +24,14 @@ namespace Examples
 
                     switch (command)
                     {
-                        case "list": ListAllProjects(connection); break;
-                        case "details": ShowProjectDetails(connection); break;
-                        case "search": SearchByNameFirst(connection); break;
-                        case "searchALL": SearchByNameAll(connection); break;
+                        case "list":
+                            ListAllProjects(connection); break;
+                        case "details":
+                            ShowProjectDetails(connection); break;
+                        case "search":
+                            SearchByNameFirst(connection); break;
+                        case "searchALL":
+                            SearchByNameAll(connection); break;
                         case "exit": return;
                     }
                 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Examples
 {
-    class Startup
+    class Examples
     {
         static void Main(string[] args)
         {

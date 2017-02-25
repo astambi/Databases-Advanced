@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ADOdemo
 {
-    class Startup
+    class ADOdemo
     {
         static void Main(string[] args)
         {

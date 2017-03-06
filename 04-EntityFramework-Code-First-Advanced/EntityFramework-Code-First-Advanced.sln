@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-Local-Store", "01-Local-Store\01-Local-Store.csproj", "{E3A8E4D7-2A25-438C-8DBA-694F365844AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Local-Store-Modification", "02-Local-Store-Modification\02-Local-Store-Modification.csproj", "{F55503FF-9BFC-4E30-BF35-98F126F92590}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3A8E4D7-2A25-438C-8DBA-694F365844AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3A8E4D7-2A25-438C-8DBA-694F365844AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3A8E4D7-2A25-438C-8DBA-694F365844AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3A8E4D7-2A25-438C-8DBA-694F365844AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F55503FF-9BFC-4E30-BF35-98F126F92590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F55503FF-9BFC-4E30-BF35-98F126F92590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F55503FF-9BFC-4E30-BF35-98F126F92590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F55503FF-9BFC-4E30-BF35-98F126F92590}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

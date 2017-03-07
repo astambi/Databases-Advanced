@@ -11,6 +11,7 @@ namespace _01_Local_Store
         static void Main(string[] args)
         {
             ProductsContext context = new ProductsContext();
+            Console.WriteLine("Creating Database [Products.CodeFirst] and seeding data");
 
             Product apple = new Product("Apple", "Kaufland", "Fruit", 2.2m) { };
             Product banana = new Product("Banana", "Kaufland", "Fruit", 3.3m);

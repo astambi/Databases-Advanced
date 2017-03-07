@@ -16,6 +16,7 @@ namespace _02_Local_Store_Modification
 
             SqlConnection connection = new SqlConnection("Server =.;Database=Products.CodeFirst;Integrated Security = true");
             connection.Open();
+            Console.WriteLine("Adding columns [Quantity] and [Weight] to Database [Products.CodeFirst] and setting default values");
 
             using (connection)
             {

@@ -22,5 +22,5 @@ namespace _03_Sales_Database
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<StoreLocation> StoreLocations { get; set; }
-    }
+    }    
 }

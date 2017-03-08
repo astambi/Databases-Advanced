@@ -3,7 +3,7 @@ namespace _03_Sales_Database.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Problem3 : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {

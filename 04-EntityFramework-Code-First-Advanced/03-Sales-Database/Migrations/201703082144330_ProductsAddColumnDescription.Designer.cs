@@ -7,18 +7,18 @@ namespace _03_Sales_Database.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddDefaultAge : IMigrationMetadata
+    public sealed partial class ProductsAddColumnDescription : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddDefaultAge));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ProductsAddColumnDescription));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703072028474_AddDefaultAge"; }
+            get { return "201703082144330_ProductsAddColumnDescription"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

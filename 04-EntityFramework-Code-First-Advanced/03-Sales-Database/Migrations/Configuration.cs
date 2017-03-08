@@ -6,12 +6,13 @@ namespace _03_Sales_Database.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SalesContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<_03_Sales_Database.SalesContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true; // Problem 6
-            AutomaticMigrationDataLossAllowed = true; // Problem 6
+            AutomaticMigrationsEnabled = true; // true for Problem 6
+            AutomaticMigrationDataLossAllowed = true; // enable for Problem 6
+            ContextKey = "_03_Sales_Database.SalesContext";
         }
 
         protected override void Seed(SalesContext context)
@@ -53,9 +54,7 @@ namespace _03_Sales_Database.Migrations
             // Customers
 
             // Uncomment for Problems 3, 4, 5
-
             // Disable for Problem 6 !
-
             //context.Customers.AddOrUpdate(c => c.Email,
             //    new Customer()
             //    {

@@ -13,7 +13,7 @@ namespace _03_Sales_Database.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201703071745274_SalesAddDateDefault"; }
+            get { return "201703082146585_SalesAddDateDefault"; }
         }
         
         string IMigrationMetadata.Source

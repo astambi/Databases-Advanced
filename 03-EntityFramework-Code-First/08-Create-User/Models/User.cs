@@ -89,10 +89,6 @@ namespace _08_Create_User.Models
                     throw new ArgumentException("Password must contain at lease 1 special symbol");
                 }
 
-                //if (!new Regex(@"[!@#$%^&*()_+<>?]+").IsMatch(value))
-                //{
-                //    throw new ArgumentException("Password must contain at lease 1 special symbol");
-                //}
                 this.password = value;
             }
         }

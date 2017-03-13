@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D0E6A028-4E04-46C7-AE9B-9280FD839837}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>_05_Photographers_Albums</RootNamespace>
+    <AssemblyName>05-Photographers-Albums</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\TagAttribute.cs" />
+    <Compile Include="Migrations\201703111222555_CreatePhotographer.cs" />
+    <Compile Include="Migrations\201703111222555_CreatePhotographer.Designer.cs">
+      <DependentUpon>201703111222555_CreatePhotographer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703111254311_AddAlbumsAndPictures.cs" />
+    <Compile Include="Migrations\201703111254311_AddAlbumsAndPictures.Designer.cs">
+      <DependentUpon>201703111254311_AddAlbumsAndPictures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703111352124_AddTags.cs" />
+    <Compile Include="Migrations\201703111352124_AddTags.Designer.cs">
+      <DependentUpon>201703111352124_AddTags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703121408591_AddSharedAlbums.cs" />
+    <Compile Include="Migrations\201703121408591_AddSharedAlbums.Designer.cs">
+      <DependentUpon>201703121408591_AddSharedAlbums.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703122116398_PhotographerRoles.cs" />
+    <Compile Include="Migrations\201703122116398_PhotographerRoles.Designer.cs">
+      <DependentUpon>201703122116398_PhotographerRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Album.cs" />
+    <Compile Include="Models\Photographer.cs" />
+    <Compile Include="Models\PhotographerAlbum.cs" />
+    <Compile Include="Models\Picture.cs" />
+    <Compile Include="Models\Tag.cs" />
+    <Compile Include="Utils\TagTransformer.cs" />
+    <Compile Include="P05_PhotographersAlbums.cs" />
+    <Compile Include="PhotographersContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703111222555_CreatePhotographer.resx">
+      <DependentUpon>201703111222555_CreatePhotographer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703111254311_AddAlbumsAndPictures.resx">
+      <DependentUpon>201703111254311_AddAlbumsAndPictures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703111352124_AddTags.resx">
+      <DependentUpon>201703111352124_AddTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703121408591_AddSharedAlbums.resx">
+      <DependentUpon>201703121408591_AddSharedAlbums.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703122116398_PhotographerRoles.resx">
+      <DependentUpon>201703122116398_PhotographerRoles.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

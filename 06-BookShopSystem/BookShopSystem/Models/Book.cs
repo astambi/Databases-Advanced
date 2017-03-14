@@ -19,7 +19,7 @@
         public Book()
         {
             this.categories = new HashSet<Category>();
-            this.relatedBooks = new HashSet<Book>(); // Steo 6
+            this.relatedBooks = new HashSet<Book>(); // Step 6
         }
 
         public int Id { get; set; }

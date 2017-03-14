@@ -1,5 +1,4 @@
 ﻿using BookShopSystem.Data;
-using BookShopSystem.Migrations;
 using BookShopSystem.Models;
 using System;
 using System.Collections.Generic;
@@ -15,9 +14,9 @@ namespace BookShopSystem
             Console.WriteLine("Solutions to EF Code First - BookShop with Automatic Migrations\n");
             BookShopContext context = new BookShopContext();
 
-            // Step 4 
-            var migrationStrategy = new MigrateDatabaseToLatestVersion<BookShopContext, Configuration>();
-            Database.SetInitializer(migrationStrategy);
+            // Step 4 => moved to BookShopContext
+            //var migrationStrategy = new MigrateDatabaseToLatestVersion<BookShopContext, Configuration>();
+            //Database.SetInitializer(migrationStrategy);
 
             Console.WriteLine("Initializing database [BookShopSystem.CodeFirst]");
             context.Database.Initialize(true);

@@ -2,7 +2,6 @@ namespace BookShopSystem.Data
 {
     using Migrations;
     using Models;
-    using System;
     using System.Data.Entity;
 
     public class BookShopContext : DbContext
@@ -10,7 +9,8 @@ namespace BookShopSystem.Data
         public BookShopContext()
             : base("name=BookShopContext")
         {
-            //Database.SetInitializer<BookShopContext>(new MigrateDatabaseToLatestVersion<BookShopContext, Configuration>()); // Step 4 => in Main
+            Database.SetInitializer<BookShopContext>(
+                new MigrateDatabaseToLatestVersion<BookShopContext, Configuration>()); // Step 4 => from Main
         }
 
         public virtual DbSet<Book> Books { get; set; }
@@ -19,7 +19,7 @@ namespace BookShopSystem.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) // Step 6 Related Books Mapping table
         {
-            modelBuilder.Entity<Book>()
+            modelBuilder.Entity<Book>() // Related Books mapping table
                 .HasMany(b => b.RelatedBooks)
                 .WithMany() // not specified => allow data loss for this update
                 .Map(m =>

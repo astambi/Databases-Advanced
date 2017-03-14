@@ -26,6 +26,7 @@ namespace BookShopSystem.Migrations
             SeedAuthors(context);       // Step 5 
             SeedBooks(context);         // Step 5 
             SeedCategories(context);    // Step 5 
+
             base.Seed(context);
         }
 
@@ -41,8 +42,8 @@ namespace BookShopSystem.Migrations
                                 .Select(x => x.Replace("\"", string.Empty))
                                 .ToArray();
                 Category category = new Category() { Name = data[0] };
-
                 int bookIndex = (i * 30) % booksCount;
+
                 for (int j = 0; j < bookIndex; j++)
                 {
                     Book book = context.Books.Local[j];
@@ -67,20 +68,21 @@ namespace BookShopSystem.Migrations
                                 .Split(',')
                                 .Select(x => x.Replace("\"", string.Empty))
                                 .ToArray();
+
                 int authorIndex = i % authorsCount;
                 Author author = context.Authors.Local[authorIndex];
 
-                Book book = new Book()
-                {
-                    AuthorId = author.Id,
-                    Edition = (EditionType)int.Parse(data[0]),
-                    ReleaseDate = DateTime.ParseExact(data[1], "d/M/yyyy", CultureInfo.InvariantCulture),
-                    Copies = int.Parse(data[2]),
-                    Price = decimal.Parse(data[3]),
-                    AgeRestriction = (AgeRestriction)int.Parse(data[4]),
-                    Title = data[5]
-                };
-                context.Books.AddOrUpdate(b => new { b.AuthorId, b.Title }, book);
+                context.Books.AddOrUpdate(b => new { b.AuthorId, b.Title },
+                    new Book()
+                    {
+                        AuthorId = author.Id,
+                        Edition = (EditionType)int.Parse(data[0]),
+                        ReleaseDate = DateTime.ParseExact(data[1], "d/M/yyyy", CultureInfo.InvariantCulture),
+                        Copies = int.Parse(data[2]),
+                        Price = decimal.Parse(data[3]),
+                        AgeRestriction = (AgeRestriction)int.Parse(data[4]),
+                        Title = data[5]
+                    });
             }
             context.SaveChanges();
         }
@@ -91,16 +93,17 @@ namespace BookShopSystem.Migrations
 
             for (int i = 1; i < authors.Length; i++)
             {
-                string[] data = authors[i].Split(',');
-                string firstName = data[0].Replace("\"", string.Empty);
-                string lastName = data[1].Replace("\"", string.Empty);
+                string[] data = authors[i]
+                                .Split(',')
+                                .Select(x => x.Replace("\"", string.Empty))
+                                .ToArray();
 
-                Author author = new Author()
-                {
-                    FirstName = firstName,
-                    LastName = lastName
-                };
-                context.Authors.AddOrUpdate(a => new { a.FirstName, a.LastName }, author);
+                context.Authors.AddOrUpdate(a => new { a.FirstName, a.LastName },
+                    new Author()
+                    {
+                        FirstName = data[0],
+                        LastName = data[1]
+                    });
             }
             context.SaveChanges();
         }

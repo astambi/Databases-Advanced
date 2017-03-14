@@ -67,8 +67,8 @@ namespace _01_Student_System
                     c.EndDate,
                     NumberOfStudents = c.Students.Count
                 }).ToList()
-                .OrderByDescending(c => c.EndDate - c.StartDate)
-                .ThenByDescending(c => c.NumberOfStudents)
+                .OrderByDescending(c => c.NumberOfStudents)
+                .ThenByDescending(c => c.EndDate - c.StartDate)
                 .ToList();
 
             Console.WriteLine($"Listing Courses Active on {date.ToString("dd/MM/yyy")} - {courses.Count()} Course(s)");
@@ -130,7 +130,7 @@ namespace _01_Student_System
             Console.Clear();
 
             var courses = context.Courses
-                .OrderByDescending(c => c.StartDate)
+                .OrderBy(c => c.StartDate)
                 .ThenByDescending(c => c.EndDate)
                 .Select(c => new { c.Name, c.Description, c.Resources });
 

@@ -2,13 +2,10 @@
 using Demo.Models;
 using EntityFramework.Extensions;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demo
 {
@@ -28,19 +25,78 @@ namespace Demo
             //BulkUpdateDelete(context);
             //CreateProcedure(context);
             //ExecuteProcedureWithParam(context);
+            //EagerLoading(context);
+            //LazyLoading(context);
+            //ExplicitLoading(context);
+            //OptimisticConcurrency();
 
+            /* Cascade Delete
+             * Make Client in Order Optional
+             * Disable Seed for orders based on ClientId
+             * Add migration
+             * or
+             * change OnModelCreating in Context => modelBuilder ...WillCascadeOnDelete(false)
+             */
+        }
 
+        private static void OptimisticConcurrency()
+        {
+            QueryContext contextFirst = new QueryContext();
+            var lastProductFirstUser = contextFirst.Products
+                .OrderByDescending(p => p.Id).First();
+            lastProductFirstUser.Name = "Changed by the First User";
 
+            QueryContext contextSecond = new QueryContext();
+            var lastProductSecondUser = contextSecond.Products
+                .OrderByDescending(p => p.Id).First();
+            lastProductSecondUser.Name = "Changed by the Second User";
 
+            // Optimistic concurrency by default
+            // Conflicting changes: last wins
+            contextFirst.SaveChanges();
+            contextSecond.SaveChanges(); // second user wins
 
+            // With a [ConcurrencyCheck] attribute on the property 
+            // => first wins & exception for the second user
 
+            // when using context ends => the lock is resolved
+        }
 
+        private static void ExplicitLoading(QueryContext context)
+        {
+            Order order = context.Orders.Find(4);
+
+            context.Entry(order)
+                    .Collection(o => o.Products)
+                    .Load();
+            var collection = context.Orders.Local; // 1 order with 2 products
+
+            foreach (Product p in collection.First().Products)
+            {
+                Console.WriteLine(p.Name);
+            }
+        }
+
+        private static void LazyLoading(QueryContext context)
+        {
+            Order order = context.Orders
+                .Include(o => o.Client) // Exception if Order does NOT have a virtual Client! & NO Include!
+                .FirstOrDefault();
+            Console.WriteLine(order.Client.Name);
+        }
+
+        private static void EagerLoading(QueryContext context)
+        {
+            Order order = context.Orders
+                .Include(o => o.Client) // obligatory for non-virtual properties
+                .FirstOrDefault();
+            Console.WriteLine(order.Client.Name);
         }
 
         private static void ExecuteProcedureWithParam(QueryContext context)
         {
             context.Database
-                .ExecuteSqlCommand(@"EXEC dbo.usp_UpdateAge @age",
+                .ExecuteSqlCommand("EXEC dbo.usp_UpdateAge @age",
                                     new SqlParameter("@age", 10));
             context.Database
                 .ExecuteSqlCommand("usp_UpdateAge @age",

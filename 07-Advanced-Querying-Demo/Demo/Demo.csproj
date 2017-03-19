@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201703191600136_AddClientAge.Designer.cs">
       <DependentUpon>201703191600136_AddClientAge.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703192101484_MakeClientInOrderOptional.cs" />
+    <Compile Include="Migrations\201703192101484_MakeClientInOrderOptional.Designer.cs">
+      <DependentUpon>201703192101484_MakeClientInOrderOptional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Client.cs" />
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703191600136_AddClientAge.resx">
       <DependentUpon>201703191600136_AddClientAge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703192101484_MakeClientInOrderOptional.resx">
+      <DependentUpon>201703192101484_MakeClientInOrderOptional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

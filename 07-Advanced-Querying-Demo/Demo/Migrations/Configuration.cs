@@ -6,7 +6,7 @@ namespace Demo.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Demo.Data.QueryContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Data.QueryContext>
     {
         public Configuration()
         {
@@ -35,39 +35,39 @@ namespace Demo.Migrations
             context.SaveChanges();
 
             // Orders
-            context.Orders.AddOrUpdate(o => new { o.ClientId },
-                new Order()
-                {
-                    ClientId = context.Clients
-                                .FirstOrDefault().Id,
-                    Products = new[] { context.Products.Find(1) }
-                },
-                new Order()
-                {
-                    ClientId = context.Clients
-                                .OrderBy(c => c.Id).Skip(1)
-                                .FirstOrDefault().Id,
-                    Products = new[] { context.Products.Find(2) }
-                },
-                new Order()
-                {
-                    ClientId = context.Clients
-                                .OrderBy(c => c.Id).Skip(2)
-                                .FirstOrDefault().Id,
-                    Products = new[] {
-                                context.Products.Find(1),
-                                context.Products.Find(2)}
-                },
-                new Order()
-                {
-                    ClientId = context.Clients
-                                .OrderBy(c => c.Id).Skip(3)
-                                .FirstOrDefault().Id,
-                    Products = new[] {
-                                context.Products.Find(1),
-                                context.Products.Find(2)}
-                }
-                );
+            //context.Orders.AddOrUpdate(o => new { o.ClientId },
+            //    new Order()
+            //    {
+            //        ClientId = context.Clients
+            //                    .FirstOrDefault().Id,
+            //        Products = new[] { context.Products.Find(1) }
+            //    },
+            //    new Order()
+            //    {
+            //        ClientId = context.Clients
+            //                    .OrderBy(c => c.Id).Skip(1)
+            //                    .FirstOrDefault().Id,
+            //        Products = new[] { context.Products.Find(2) }
+            //    },
+            //    new Order()
+            //    {
+            //        ClientId = context.Clients
+            //                    .OrderBy(c => c.Id).Skip(2)
+            //                    .FirstOrDefault().Id,
+            //        Products = new[] {
+            //                    context.Products.Find(1),
+            //                    context.Products.Find(2)}
+            //    },
+            //    new Order()
+            //    {
+            //        ClientId = context.Clients
+            //                    .OrderBy(c => c.Id).Skip(3)
+            //                    .FirstOrDefault().Id,
+            //        Products = new[] {
+            //                    context.Products.Find(1),
+            //                    context.Products.Find(2)}
+            //    }
+            //    );
             context.SaveChanges();
 
             base.Seed(context);

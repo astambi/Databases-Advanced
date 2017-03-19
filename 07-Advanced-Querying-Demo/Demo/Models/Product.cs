@@ -13,6 +13,7 @@
         public int Id { get; set; }
 
         [Required]
+        //[ConcurrencyCheck] // => first user wins, next user gets an exception
         public string Name { get; set; }
 
         public string Description { get; set; }

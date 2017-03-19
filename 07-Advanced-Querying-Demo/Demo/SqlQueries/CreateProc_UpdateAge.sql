@@ -1,0 +1,6 @@
+﻿CREATE PROCEDURE usp_UpdateAge (@age int)
+AS
+BEGIN
+	UPDATE CLIENTS
+	SET AGE += @age
+END

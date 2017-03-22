@@ -6,6 +6,7 @@
     {
         public string Execute()
         {
+            Console.WriteLine("Good Bye!");
             Environment.Exit(0);
             return "Good Bye!";
         }

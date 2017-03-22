@@ -25,11 +25,23 @@
             string username = data[0];
             string albumTitle = data[1];
             string bgColor = data[2];
-            string[] tags = data.Skip(3).ToArray();
+            string[] tags = data.Skip(3).ToArray(); // there must be at least 1 tag
+
+            // 2. Extend Photo Share System
+            if (!AuthenticationService.IsAuthenticated())
+            {
+                throw new InvalidOperationException("Invalid credentials! You should log in first.");
+            } 
 
             if (!this.userService.IsExistingUser(username))
             {
                 throw new ArgumentException($"User {username} not found!");
+            }
+
+            // 2. Extend Photo Share System
+            if (AuthenticationService.GetCurrentUser().Username != username)
+            {
+                throw new InvalidOperationException("Invalid credentials! You can create albums only with your own profile.");
             }
 
             if (this.albumService.IsExistingAlbum(albumTitle))
@@ -44,14 +56,14 @@
                 throw new AggregateException($"Color {bgColor} not found!");
             }
 
-            if (tags.Any(t => !this.tagService.IsExistingTag(TagUtilities.ValidateOrTransform(t))))
+            tags = tags.Select(t => TagUtilities.ValidateOrTransform(t)).ToArray(); // validate tags
+
+            if (tags.Any(t => !this.tagService.IsExistingTag(t)))
             {
                 throw new ArgumentException("Invalid tags!");
             }
 
-            string[] validTags = tags.Select(t => TagUtilities.ValidateOrTransform(t)).ToArray();
-
-            this.albumService.AddAlbum(username, albumTitle, color, validTags);
+            this.albumService.AddAlbum(username, albumTitle, color, tags);
 
             return $"Album {albumTitle} successfully created!";
         }

@@ -8,14 +8,14 @@
     {
         public void AddTown(string townName, string countryName)
         {
-            Town town = new Town()
-            {
-                Name = townName,
-                Country = countryName
-            };
-
             using (PhotoShareContext context = new PhotoShareContext())
             {
+                Town town = new Town()
+                {
+                    Name = townName,
+                    Country = countryName
+                };
+
                 context.Towns.Add(town);
                 context.SaveChanges();
             }

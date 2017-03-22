@@ -1,5 +1,6 @@
 namespace PhotoShare.Data.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
 
     internal class Configuration : DbMigrationsConfiguration<PhotoShareContext>
@@ -12,6 +13,7 @@ namespace PhotoShare.Data.Migrations
 
         protected override void Seed(PhotoShareContext context)
         {
+            //base.Seed(context);
         }
     }
 }

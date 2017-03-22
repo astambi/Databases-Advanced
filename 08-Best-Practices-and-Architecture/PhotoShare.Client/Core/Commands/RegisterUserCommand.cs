@@ -5,8 +5,9 @@
 
     public class RegisterUserCommand
     {
-        private readonly UserService userService;           // add UserService
-        public RegisterUserCommand(UserService userService) // add UserService
+        private readonly UserService userService;
+
+        public RegisterUserCommand(UserService userService) 
         {
             this.userService = userService;
         }
@@ -18,7 +19,13 @@
             string password = data[1];
             string repeatPassword = data[2];
             string email = data[3];
-            
+
+            // 2. Extend Photo Share System
+            if (AuthenticationService.IsAuthenticated())
+            {
+                throw new InvalidOperationException("You should log out first!");
+            }
+
             if (this.userService.IsExistingUser(username))
             {
                 throw new InvalidOperationException($"Username {username} is already taken!");

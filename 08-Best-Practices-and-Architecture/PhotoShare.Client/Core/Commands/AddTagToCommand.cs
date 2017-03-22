@@ -21,10 +21,22 @@
             string albumName = data[0];
             string tagName = data[1].ValidateOrTransform(); // validated
 
+            // 2. Extend Photo Share System
+            if (!AuthenticationService.IsAuthenticated())
+            {
+                throw new InvalidOperationException("Invalid credentials! You should log in first.");
+            }
+
             if (!this.albumService.IsExistingAlbum(albumName) ||
                 !this.tagService.IsExistingTag(tagName))
             {
                 throw new ArgumentException("Either tag or album do not exist!");
+            }
+
+            // 2. Extend Photo Share System
+            if (!this.albumService.IsAlbumOwner(albumName, AuthenticationService.GetCurrentUser().Id))
+            {
+                throw new InvalidOperationException("Invalid credentials! You can add tags to an album only if you are the album owner.");
             }
 
             this.albumService.AddTagToAlbum(albumName, tagName);

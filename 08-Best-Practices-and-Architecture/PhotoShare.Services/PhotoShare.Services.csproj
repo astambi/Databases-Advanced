@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlbumService.cs" />
+    <Compile Include="AuthenticationService.cs" />
+    <Compile Include="PictureService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagService.cs" />
     <Compile Include="TownService.cs" />

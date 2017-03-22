@@ -17,9 +17,21 @@ namespace PhotoShare.Client.Core.Commands
         {
             string username = data[0];
 
+            // 2. Extend Photo Share System
+            if (!AuthenticationService.IsAuthenticated())
+            {
+                throw new InvalidOperationException("Invalid credentials! You should log in first.");
+            }
+
             if (!this.userService.IsExistingUser(username))
             {
                 throw new ArgumentException($"User {username} not found!");
+            }
+
+            // 2. Extend Photo Share System
+            if (AuthenticationService.GetCurrentUser().Username != username)
+            {
+                throw new InvalidOperationException("Invalid credentials! You can delete your own profile only.");
             }
 
             User user = this.userService.GetUserByUsername(username);

@@ -5,9 +5,9 @@
 
     public class AddTownCommand
     {
-        private readonly TownService townService;       // add TownService
+        private readonly TownService townService; 
 
-        public AddTownCommand(TownService townService)  // add TownService
+        public AddTownCommand(TownService townService)
         {
             this.townService = townService;
         }
@@ -15,8 +15,14 @@
         // AddTown <townName> <countryName>
         public string Execute(string[] data)
         {
-            string townName = data[0];  // modified
-            string country = data[1];   // modified
+            string townName = data[0];
+            string country = data[1];
+
+            // 2. Extend Photo Share System
+            if (!AuthenticationService.IsAuthenticated())
+            {
+                throw new InvalidOperationException("Invalid credentials! You should log in first.");
+            }
 
             if (this.townService.IsExistingTown(townName))
             {

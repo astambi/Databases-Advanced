@@ -42,7 +42,7 @@
             }
 
             // 2. Extend Photo Share System
-            if (!this.albumService.IsAlbumOwner(albumId, AuthenticationService.GetCurrentUser().Id))
+            if (!this.albumService.IsAlbumOwner(albumId))
             {
                 throw new InvalidOperationException("Invalid credentials! You can share your own albums only.");
             }
@@ -53,6 +53,11 @@
             }
 
             Album album = this.albumService.GetAlbumById(albumId);
+
+            if (albumService.IsAlbumSharedWithUserInRole(albumId, username, role))
+            {
+                throw new InvalidOperationException($"Album {album.Name} already shared with user {username} ({role.ToString()})!");
+            }
 
             this.albumService.ShareAlbum(albumId, username, role);
 

@@ -38,7 +38,7 @@
             }
 
             // 2. Extend Photo Share System
-            if (!this.albumService.IsAlbumOwner(albumName, AuthenticationService.GetCurrentUser().Id))
+            if (!this.albumService.IsAlbumOwner(albumName))
             {
                 throw new InvalidOperationException("Invalid credentials! You can upload pictures to an album only if you are the album owner.");
             }

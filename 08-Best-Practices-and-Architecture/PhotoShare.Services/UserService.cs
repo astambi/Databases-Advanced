@@ -149,5 +149,13 @@
                 return context.Users.Any(u => u.Username == username && u.Password == password);
             }
         }
+
+        public bool HasProfileRights(string username)
+        {
+            using (PhotoShareContext context = new PhotoShareContext())
+            {
+                return AuthenticationService.GetCurrentUser().Username == username;
+            }
+        }
     }
 }

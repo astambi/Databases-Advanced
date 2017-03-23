@@ -7,8 +7,6 @@
 
     public class AlbumService
     {
-        public Tag TagUtilities { get; private set; }
-
         public void AddAlbum(string username, string albumName, Color color, string[] tagNames)
         {
             using (PhotoShareContext context = new PhotoShareContext())
@@ -84,11 +82,15 @@
             }
         }
 
-        public Album GetAlbumByName(string albumName)
+        public bool IsAlbumSharedWithUserInRole(int albumId, string username, Role role)
         {
             using (PhotoShareContext context = new PhotoShareContext())
             {
-                return context.Albums.SingleOrDefault(a => a.Name == albumName);
+                return context.AlbumRoles
+                    .Any(ar =>
+                            ar.Album.Id == albumId &&
+                            ar.User.Username == username &&
+                            ar.Role == role);
             }
         }
 
@@ -102,14 +104,6 @@
                     User = context.Users.SingleOrDefault(u => u.Username == username),
                     Role = role
                 };
-
-                bool isSharedWithUserInRole = context.AlbumRoles
-                    .Any(ar => ar.Album.Id == albumId && ar.User.Id == albumRole.User.Id && ar.Role == role);
-
-                if (isSharedWithUserInRole)
-                {
-                    throw new InvalidOperationException($"Album {albumRole.Album.Name} already shared with user {username} ({role.ToString()})!");
-                }
 
                 context.AlbumRoles.Add(albumRole);
                 context.SaveChanges();
@@ -142,21 +136,29 @@
             }
         }
 
-        public bool IsAlbumOwner(int albumId, int userId)
+        public bool IsAlbumOwner(string albumName)
         {
             using (PhotoShareContext context = new PhotoShareContext())
             {
+                int currentUserId = AuthenticationService.GetCurrentUser().Id;
                 return context.AlbumRoles
-                    .Any(ar => ar.Album.Id == albumId && ar.User.Id == userId && ar.Role == Role.Owner);
+                    .Any(ar =>
+                            ar.Album.Name == albumName &&
+                            ar.User.Id == currentUserId &&
+                            ar.Role == Role.Owner);
             }
         }
 
-        public bool IsAlbumOwner(string albumName, int userId)
+        public bool IsAlbumOwner(int albumId)
         {
             using (PhotoShareContext context = new PhotoShareContext())
             {
+                int currentUserId = AuthenticationService.GetCurrentUser().Id;
                 return context.AlbumRoles
-                    .Any(ar => ar.Album.Name == albumName && ar.User.Id == userId && ar.Role == Role.Owner);
+                    .Any(ar =>
+                            ar.Album.Id == albumId &&
+                            ar.User.Id == currentUserId &&
+                            ar.Role == Role.Owner);
             }
         }
     }

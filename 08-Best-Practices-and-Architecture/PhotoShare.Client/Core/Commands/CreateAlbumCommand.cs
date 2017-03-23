@@ -39,7 +39,7 @@
             }
 
             // 2. Extend Photo Share System
-            if (AuthenticationService.GetCurrentUser().Username != username)
+            if (!userService.HasProfileRights(username))
             {
                 throw new InvalidOperationException("Invalid credentials! You can create albums only with your own profile.");
             }

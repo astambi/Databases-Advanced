@@ -34,7 +34,7 @@
             }
 
             // 2. Extend Photo Share System
-            if (AuthenticationService.GetCurrentUser().Username != username1)
+            if (!userService.HasProfileRights(username1))
             {
                 throw new InvalidOperationException("Invalid credentials! You can add friends only to your own profile.");
             }

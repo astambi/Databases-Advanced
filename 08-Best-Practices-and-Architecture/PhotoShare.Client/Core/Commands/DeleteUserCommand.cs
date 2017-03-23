@@ -29,7 +29,7 @@ namespace PhotoShare.Client.Core.Commands
             }
 
             // 2. Extend Photo Share System
-            if (AuthenticationService.GetCurrentUser().Username != username)
+            if (!userService.HasProfileRights(username))
             {
                 throw new InvalidOperationException("Invalid credentials! You can delete your own profile only.");
             }

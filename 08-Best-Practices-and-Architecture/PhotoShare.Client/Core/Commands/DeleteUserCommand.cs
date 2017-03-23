@@ -41,7 +41,8 @@ namespace PhotoShare.Client.Core.Commands
                 throw new InvalidOperationException($"User {username} is already deleted!");
             }
 
-            userService.DeleteUser(user);
+            //userService.DeleteUser(user);
+            userService.DeleteUser(username);
 
             return $"User {username} was deleted successfully!";
         }

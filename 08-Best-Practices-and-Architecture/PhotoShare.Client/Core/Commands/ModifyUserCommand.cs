@@ -40,7 +40,7 @@
                 throw new InvalidOperationException("Invalid credentials! You can modify your own profile only.");
             }
 
-            User user = this.userService.GetUserByUsername(username);
+            //User user = this.userService.GetUserByUsername(username); // v.2
 
             if (property == "Password")
             {
@@ -49,8 +49,7 @@
                 {
                     throw new ArgumentException($"Value {newValue} not valid.\nInvalid Password");
                 }
-
-                user.Password = newValue;
+                //user.Password = newValue; // v.2
             }
             else if (property == "BornTown")
             {
@@ -58,8 +57,7 @@
                 {
                     throw new ArgumentException($"Value {newValue} not valid.\nTown {newValue} not found!");
                 }
-
-                user.BornTown = this.townService.GetTownByName(newValue);
+                //user.BornTown = this.townService.GetTownByName(newValue); // v.2
             }
             else if (property == "CurrentTown")
             {
@@ -67,15 +65,15 @@
                 {
                     throw new ArgumentException($"Value {newValue} not valid.\nTown {newValue} not found!");
                 }
-
-                user.CurrentTown = this.townService.GetTownByName(newValue);
+                //user.CurrentTown = this.townService.GetTownByName(newValue); // v.2
             }
             else
             {
                 throw new ArgumentException($"Property {property} not supported!");
             }
 
-            userService.UpdateUser(user);
+            //userService.UpdateUser(user); // v.2
+            userService.UpdateUser(username, property, newValue); // v.1
 
             return $"User {username} {property} is {newValue}.";
         }

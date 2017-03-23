@@ -44,6 +44,32 @@
             }
         }
 
+        public void UpdateUser(string username, string property, string newValue)
+        {
+            using (PhotoShareContext context = new PhotoShareContext())
+            {
+                User user = context.Users
+                    .Include(u => u.BornTown)       // or .Include("BornTown") 
+                    .Include(u => u.CurrentTown)    // or .Include("CurrentTown")
+                    .SingleOrDefault(u => u.Username == username);
+
+                switch (property)
+                {
+                    case "Password":
+                        user.Password = newValue;
+                        break;
+                    case "BornTown":
+                        user.BornTown = context.Towns.SingleOrDefault(t => t.Name == newValue);
+                        break;
+                    case "CurrentTown":
+                        user.CurrentTown = context.Towns.SingleOrDefault(t => t.Name == newValue);
+                        break;
+                }
+
+                context.SaveChanges();
+            }
+        }
+
         public void UpdateUser(User updatedUser)
         {
             using (PhotoShareContext context = new PhotoShareContext())
@@ -97,6 +123,18 @@
 
                 //User userToDelete = context.Users.Find(user.Id);  // v.2
                 //userToDelete.IsDeleted = true;
+
+                context.SaveChanges();
+            }
+        }
+
+        public void DeleteUser(string username)
+        {
+            using (PhotoShareContext context = new PhotoShareContext())
+            {
+                context.Users
+                    .SingleOrDefault(u => u.Username == username)
+                    .IsDeleted = true;
 
                 context.SaveChanges();
             }

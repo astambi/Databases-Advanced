@@ -23,6 +23,11 @@
                 throw new ArgumentException("You should log out first!");
             }
 
+            if (userService.GetUserByUsername(username).IsDeleted == true)
+            {
+                throw new ArgumentException($"User {username} was deleted!");
+            }
+
             if (!this.userService.HasValidUserCredentials(username, password))
             {
                 throw new ArgumentException("Invalid username or password!");

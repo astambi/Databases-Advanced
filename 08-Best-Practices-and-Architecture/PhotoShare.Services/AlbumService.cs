@@ -33,28 +33,27 @@
             }
         }
 
+        public bool HasAlbumTag(string albumName, string tagName)
+        {
+            using (PhotoShareContext context = new PhotoShareContext())
+            {
+                return context.Albums
+                    .Include("Tags")
+                    .SingleOrDefault(a => a.Name == albumName)
+                    .Tags
+                    .Any(t => t.Name == tagName);
+            }
+        }
+
         public void AddTagToAlbum(string albumName, string tagName)
         {
             using (PhotoShareContext context = new PhotoShareContext())
             {
-                try
-                {
-                    //context.Tags
-                    //    .FirstOrDefault(t => t.Name == tagName)
-                    //    .Albums
-                    //    .Add(context.Albums.FirstOrDefault(a => a.Name == albumName));
+                Tag tag = context.Tags.SingleOrDefault(t => t.Name == tagName);
+                Album album = context.Albums.SingleOrDefault(a => a.Name == albumName);
 
-                    context.Albums
-                        .SingleOrDefault(a => a.Name == albumName)
-                        .Tags
-                        .Add(context.Tags.SingleOrDefault(t => t.Name == tagName));
-
-                    context.SaveChanges();
-                }
-                catch (Exception e)
-                {
-                    throw new InvalidOperationException($"Tag {tagName} already added to album {albumName}!");
-                }
+                album.Tags.Add(tag);
+                context.SaveChanges();
             }
         }
 

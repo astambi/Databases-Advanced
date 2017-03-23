@@ -39,6 +39,11 @@
                 throw new InvalidOperationException("Invalid credentials! You can add tags to an album only if you are the album owner.");
             }
 
+            if (this.albumService.HasAlbumTag(albumName, tagName))
+            {
+                throw new InvalidOperationException($"Tag {tagName} already added to album {albumName}!");
+            }
+
             this.albumService.AddTagToAlbum(albumName, tagName);
 
             return $"Tag {tagName} added to {albumName}!";

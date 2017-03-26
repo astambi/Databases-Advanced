@@ -14,7 +14,7 @@ namespace Employees.Data.Migrations
 
         protected override void Seed(EmployeesContext context) // Problem 3
         {
-            Console.WriteLine("Seeding data");
+            Console.WriteLine("Seeding data\n");
 
             SeedEmployees(context);
             AssignEmployeesToManagers(context);

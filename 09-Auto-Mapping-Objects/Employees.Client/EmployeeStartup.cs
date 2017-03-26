@@ -22,11 +22,11 @@
 
         private static void Projection()
         {
-            Console.WriteLine("Solution to Problem 3. Projection");
+            Console.WriteLine("\nSolution to Problem 3. Projection");
 
             using (EmployeesContext context = new EmployeesContext())
             {
-                Console.WriteLine("Initializing database");
+                Console.WriteLine("Initializing database [Employees]");
                 context.Database.Initialize(true);
 
                 List<EmployeeDto> employeeDtos = context.Employees
@@ -41,7 +41,7 @@
 
         private static void AdvancedMapping()
         {
-            Console.WriteLine("Solution to Problem 2. Advanced Mapping");
+            Console.WriteLine("\nSolution to Problem 2. Advanced Mapping");
 
             List<Employee> managers = SeedEmployeesWithManagers();
             List<ManagerDto> managerDtos = Mapper.Map<List<Employee>, List<ManagerDto>>(managers);
@@ -114,7 +114,7 @@
                 LastName = "Jobs",
                 Salary = 1m,
                 Address = "Palo Alto",
-                Birthday = new DateTime(1965, 12, 5)
+                Birthday = new DateTime(1955, 2, 24)
             };
             EmployeeDto dto = Mapper.Map<EmployeeDto>(emp);
 

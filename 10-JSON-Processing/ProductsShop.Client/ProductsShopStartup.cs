@@ -14,7 +14,6 @@
         {
             InitializeDatabase();
             SeedData();
-
             RunSolutions();
         }
 

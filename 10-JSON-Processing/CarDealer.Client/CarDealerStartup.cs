@@ -14,7 +14,6 @@
         {
             InitializeDatabase();
             SeedData();
-
             RunSolutions();
         }
 
@@ -106,7 +105,6 @@
             using (CarDealerContext context = new CarDealerContext())
             {
                 var cars = context.Cars
-                    //.Include("Parts")
                     .Select(c => new
                     {
                         Car = new
@@ -168,8 +166,6 @@
             using (CarDealerContext context = new CarDealerContext())
             {
                 var customers = context.Customers
-                    //.Include("Sales")
-                    //.Include("Cars")
                     .OrderBy(c => c.BirthDate)
                     .ThenBy(c => c.IsYoungDriver) // false first => ASC
                     .Select(c => new
@@ -205,11 +201,16 @@
 
                 for (int i = 0; i < 15; i++)
                 {
+                    int customerId = i * 5 % customersCount + 1;
+                    int youngDriverDiscount = 0;
+                    if (context.Customers.Find(customerId).IsYoungDriver == true)
+                        youngDriverDiscount = 5;
+
                     Sale sale = new Sale()
                     {
                         CarId = i * 3 % carsCount + 1,
-                        CustomerId = i * 5 % customersCount + 1,
-                        Discount = discounts[i * 7 % discountsCount] / 100m
+                        CustomerId = customerId,
+                        Discount = (discounts[i * 7 % discountsCount] + youngDriverDiscount) / 100m
                     };
                     sales.Add(sale);
                 }

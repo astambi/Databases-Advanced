@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCatalog.Models", "BookC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCatalog.Business", "BookCatalog.Business\BookCatalog.Business.csproj", "{FF8452AD-8158-4CB8-840E-E6B8642BE824}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users", "Users\Users.csproj", "{68991447-48E0-472A-A7EF-460F7DE524CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BookCatalog", "BookCatalog", "{7DB211F5-E5DC-4BCA-9116-18CCAA356CE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,8 +43,18 @@ Global
 		{FF8452AD-8158-4CB8-840E-E6B8642BE824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF8452AD-8158-4CB8-840E-E6B8642BE824}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF8452AD-8158-4CB8-840E-E6B8642BE824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68991447-48E0-472A-A7EF-460F7DE524CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68991447-48E0-472A-A7EF-460F7DE524CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68991447-48E0-472A-A7EF-460F7DE524CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68991447-48E0-472A-A7EF-460F7DE524CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C6F43576-CE10-4B6C-8BBD-8C5B9637E15A} = {7DB211F5-E5DC-4BCA-9116-18CCAA356CE4}
+		{AC6CE99E-F1F4-49EE-BA31-EC231181FCD8} = {7DB211F5-E5DC-4BCA-9116-18CCAA356CE4}
+		{2F875DD3-36B5-4FD3-8ADE-1C99DDA5FF90} = {7DB211F5-E5DC-4BCA-9116-18CCAA356CE4}
+		{FF8452AD-8158-4CB8-840E-E6B8642BE824} = {7DB211F5-E5DC-4BCA-9116-18CCAA356CE4}
 	EndGlobalSection
 EndGlobal

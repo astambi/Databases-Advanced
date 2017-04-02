@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<catalog>
+<albums>
   <album>
     <name>OK Computer</name>
     <artist>Radiohead</artist>
@@ -58,4 +58,4 @@
       </song>
     </songs>
   </album>
-</catalog>
+</albums>

@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MusicAlbumsCatalog.cs" />
+    <Compile Include="MusicAlbumsStartup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -51,8 +51,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="ExportsXml\catalog.xml" />
-    <Content Include="ExportsXml\catalogNoFormatting.xml" />
+    <Content Include="Export\catalog1.xml" />
+    <Content Include="Export\catalog1NoFormatting.xml" />
+    <Content Include="Export\catalog2.xml" />
+    <Content Include="Export\catalog2NoFormatting.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

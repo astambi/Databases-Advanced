@@ -74,8 +74,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Export\cars-and-parts.xml" />
+    <Content Include="Export\cars-and-partsNoFormatting.xml" />
     <Content Include="Export\cars.xml" />
+    <Content Include="Export\carsNoFormatting.xml" />
+    <Content Include="Export\customers-total-sales.xml" />
+    <Content Include="Export\customers-total-salesNoFormatting.xml" />
+    <Content Include="Export\ferrari-cars.xml" />
+    <Content Include="Export\ferrari-carsNoFormatting.xml" />
+    <Content Include="Export\local-suppliers.xml" />
+    <Content Include="Export\local-suppliersNoFormatting.xml" />
     <Content Include="Export\sales-discounts.xml" />
+    <Content Include="Export\sales-discountsNoFormatting.xml" />
     <Content Include="Import\cars.xml" />
     <Content Include="Import\customers.xml" />
     <Content Include="Import\parts.xml" />

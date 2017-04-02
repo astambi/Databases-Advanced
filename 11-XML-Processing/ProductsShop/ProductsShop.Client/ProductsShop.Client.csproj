@@ -61,9 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Import\categories.json" />
-    <None Include="Import\products.json" />
-    <None Include="Import\users.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +73,20 @@
       <Name>ProductsShop.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Export\categories-by-products.xml" />
+    <Content Include="Export\categories-by-productsNoFormatting.xml" />
+    <Content Include="Export\products-in-range.xml" />
+    <Content Include="Export\products-in-rangeNoFormatting.xml" />
+    <Content Include="Export\users-and-products.xml" />
+    <Content Include="Export\users-and-productsNoFormatting.xml" />
+    <Content Include="Export\users-sold-products.xml" />
+    <Content Include="Export\users-sold-productsNoFormatting.xml" />
+    <Content Include="Import\categories.xml" />
+    <Content Include="Import\products.xml" />
+    <Content Include="Import\users.xml" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

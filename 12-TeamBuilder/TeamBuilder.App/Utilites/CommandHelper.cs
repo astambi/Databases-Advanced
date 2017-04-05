@@ -1,4 +1,4 @@
-﻿namespace TeamBuilder.App.Utilities
+﻿namespace TeamBuilder.App.Utilites
 {
     using Data;
     using Models;
@@ -38,7 +38,6 @@
                 return context.Teams.Any(t => t.Name == teamName && t.CreatorId == user.Id);
             }
         }
-
         public static bool IsUserCreatorOfEvent(string eventName, User user)
         {
             using (TeamBuilderContext context = new TeamBuilderContext())
@@ -51,7 +50,8 @@
         {
             using (TeamBuilderContext context = new TeamBuilderContext())
             {
-                return context.Teams.Any(t => t.Name == teamName && t.Members.Any(m => m.Username == username));
+                return context.Teams
+                    .Any(t => t.Name == teamName && t.Members.Any(m => m.Username == username));
             }
         }
 

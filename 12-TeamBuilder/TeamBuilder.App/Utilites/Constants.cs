@@ -1,4 +1,4 @@
-﻿namespace TeamBuilder.App.Utilities
+﻿namespace TeamBuilder.App.Utilites
 {
     public static class Constants
     {
@@ -41,11 +41,14 @@
             public const string UsernameNotValid = "Username {0} not valid!";
             public const string PasswordNotValid = "Password {0} not valid!";
             public const string PasswordDoesNotMatch = "Passwords do not match!";
+
+            public const string FirstNameNotValid = "Firstname {0} not valid!";
+            public const string LastNameNotValid = "Lastname {0} not valid!";
+
             public const string AgeNotValid = "Age not valid!";
             public const string GenderNotValid = "Gender should be either “Male” or “Female”!";
             public const string UsernameIsTaken = "Username {0} is already taken!";
             public const string UserOrPasswordIsInvalid = "Invalid username or password!";
-
             public const string InvalidDateFormat = "Please insert the dates in format: [dd/MM/yyyy HH:mm]!";
 
             // Team error messages.

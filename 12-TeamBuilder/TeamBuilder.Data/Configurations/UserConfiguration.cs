@@ -9,11 +9,13 @@
     {
         public UserConfiguration()
         {
+            // User properties
             this.Property(u => u.Username)
                 .IsRequired()
+                .HasMaxLength(25)
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,
-                    new IndexAnnotation(new IndexAttribute("IX_Users_Username", 1) { IsUnique = true }))                // Unique
-                .HasMaxLength(25);
+                    new IndexAnnotation(new IndexAttribute("IX_Users_Username", 1)
+                    { IsUnique = true })); // unique
 
             this.Property(u => u.FirstName)
                 .HasMaxLength(25);
@@ -25,27 +27,27 @@
                 .IsRequired()
                 .HasMaxLength(30);
 
-            this.HasMany(u => u.CreatedTeams)
-                .WithRequired(t => t.Creator)   // one-to-many User-Team
+            // Navigation properties
+            this.HasMany(u => u.CreatedTeams)           // one-to many User-CreatedTeam
+                .WithRequired(t => t.Creator)
                 .WillCascadeOnDelete(false);
 
-            this.HasMany(u => u.CreatedEvents)
-                .WithRequired(e => e.Creator)   // one-to-many User-Event
+            this.HasMany(u => u.CreatedEvents)          // one-to-many User-CreatedEvent
+                .WithRequired(e => e.Creator)
                 .WillCascadeOnDelete(false);
 
-            this.HasMany(u => u.Teams)
-                .WithMany(t => t.Members)       // many-to-many User-Team
-                .Map(ca =>
-                {
-                    ca.MapLeftKey("UserId");
-                    ca.MapRightKey("TeamId");
-                    ca.ToTable("UserTeams");
-                });
-
-            this.HasMany(u => u.ReceivedInvitations)
+            this.HasMany(u => u.ReceivedInvitations)    // one-to-many User-ReceivedInvitation
                 .WithRequired(i => i.InvitedUser)
                 .WillCascadeOnDelete(false);
-            
+
+            this.HasMany(u => u.Teams)                  // many-to-many User-Team
+                .WithMany(t => t.Members)
+                .Map(ut =>
+                {
+                    ut.MapLeftKey("UserId");
+                    ut.MapRightKey("TeamId");
+                    ut.ToTable("UserTeams");
+                });
         }
     }
 }

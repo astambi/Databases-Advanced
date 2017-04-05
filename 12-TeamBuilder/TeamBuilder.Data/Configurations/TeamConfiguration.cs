@@ -9,40 +9,47 @@
     {
         public TeamConfiguration()
         {
+            // Team properties
             this.Property(t => t.Name)
                 .IsRequired()
+                .HasMaxLength(25)
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,
-                new IndexAnnotation(new IndexAttribute("IX_Teams_Name", 1) { IsUnique = true }))
-                .HasMaxLength(25);
+                    new IndexAnnotation(new IndexAttribute("IX_Teams_Name", 1)
+                    { IsUnique = true }));
 
             this.Property(t => t.Description)
-                .HasMaxLength(30);
+                .HasMaxLength(32);
 
-            this.Property(t => t.Acronym)
-                .IsRequired();
+            this.Property(t => t.Acrinym)
+                .IsRequired()
+                .IsFixedLength()
+                .HasMaxLength(3);
 
-            this.HasMany(t => t.Members)
-                .WithMany(u => u.Teams)                 // many-to-many User-Team
-                .Map(ca =>
+            // Navigation properties
+            this.HasMany(t => t.Members)            // many-to-many User-Team
+                .WithMany(u => u.Teams)
+                .Map(ut =>
                 {
-                    ca.MapLeftKey("UserId");
-                    ca.MapRightKey("TeamId");
-                    ca.ToTable("UserTeams");
+                    ut.MapLeftKey("UserId");
+                    ut.MapRightKey("TeamId");
+                    ut.ToTable("UserTeams");
                 });
 
-            this.HasMany(t => t.Events)
-                .WithMany(e => e.ParticipatingTeams)    // many-to-many Event-Team
-                .Map(ca =>
-                {
-                    ca.MapLeftKey("EventId");
-                    ca.MapRightKey("TeamId");
-                    ca.ToTable("EventTeams");
-                });
+            this.HasRequired(t => t.Creator)        // one-to-many User-CreatedTeam
+                .WithMany(u => u.CreatedTeams);
 
-            this.HasMany(t => t.Invitations)            
+            this.HasMany(t => t.Invitations)        // one-to-many Team-Invitation
                 .WithRequired(i => i.Team)
                 .WillCascadeOnDelete(false);
 
+            this.HasMany(t => t.AttendedEvents)     // many-to-many Event-ParticipatingTeam
+                .WithMany(e => e.ParticipatingTeams)
+                .Map(et =>
+                {
+                    et.MapLeftKey("EventId");
+                    et.MapRightKey("TeamId");
+                    et.ToTable("EventTeams");
+                });
         }
     }
 }

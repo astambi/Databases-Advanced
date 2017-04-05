@@ -1,13 +1,15 @@
-﻿using System;
-namespace TeamBuilder.App.Core.Commands
+﻿namespace TeamBuilder.App.Core.Commands
 {
-    using Utilities;
+    using System;
+    using Utilites;
 
     class ExitCommand
     {
-        public string Execute(string[] inputArgs)
+        // Exit
+        public string Execute(string[] args)
         {
-            Check.CheckLength(0, inputArgs);
+            Check.CheckLength(0, args);
+            Console.WriteLine("Bye!");
 
             Environment.Exit(0);
 

@@ -7,13 +7,11 @@
     {
         public InvitationConfiguration()
         {
-            this.HasRequired(i => i.InvitedUser)
-                .WithMany(u => u.ReceivedInvitations)   // one-to-many User-Invitation
-                .WillCascadeOnDelete(false);
+            this.HasRequired(i => i.InvitedUser)        // one-to-many user-receivedinvitation
+                .WithMany(u => u.ReceivedInvitations);
 
-            this.HasRequired(i => i.Team)
-                .WithMany(t => t.Invitations)           // one-to-many Team-Invitation
-                .WillCascadeOnDelete(false);
+            this.HasRequired(i => i.Team)               // one-to-many Team-Invitation
+                .WithMany(t => t.Invitations);
         }
     }
 }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2534A3CA-DE3C-43EA-A801-951C60A3F769}</ProjectGuid>
+    <ProjectGuid>{094102BD-3D86-441B-821E-A8A8DC12CA4E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TeamBuilder.App</RootNamespace>
@@ -53,30 +53,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application.cs" />
+    <Compile Include="Core\AuthenticationManager.cs" />
     <Compile Include="Core\CommandDispatcher.cs" />
+    <Compile Include="Core\Commands\DeleteUserCommand.cs" />
     <Compile Include="Core\Commands\ExitCommand.cs" />
-    <Compile Include="Core\Commands\RegisterUserCommand.cs" />
+    <Compile Include="Core\Commands\LoginCommand.cs" />
+    <Compile Include="Core\Commands\LogoutCommand.cs" />
+    <Compile Include="Core\Commands\RegisterCommand.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\Check.cs" />
-    <Compile Include="Utilities\CommandHelper.cs" />
-    <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilites\Check.cs" />
+    <Compile Include="Utilites\CommandHelper.cs" />
+    <Compile Include="Utilites\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\TeamBuilder.Data\TeamBuilder.Data.csproj">
-      <Project>{a54b0d5a-f542-4815-9dc8-9b6aefd35c1a}</Project>
+      <Project>{1df19bf9-c1cc-42b2-a990-19c52e1a43b1}</Project>
       <Name>TeamBuilder.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\TeamBuilder.Models\TeamBuilder.Models.csproj">
-      <Project>{fedebdcf-9c36-4c27-9385-d6fbcebed7f2}</Project>
+      <Project>{ce7923a2-fccc-47e7-807e-4ec6d7a4f42d}</Project>
       <Name>TeamBuilder.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

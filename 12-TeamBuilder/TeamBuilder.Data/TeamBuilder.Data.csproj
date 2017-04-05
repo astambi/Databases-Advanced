@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A54B0D5A-F542-4815-9DC8-9B6AEFD35C1A}</ProjectGuid>
+    <ProjectGuid>{1DF19BF9-C1CC-42B2-A990-19C52E1A43B1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TeamBuilder.Data</RootNamespace>
@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TeamBuilder.Models\TeamBuilder.Models.csproj">
-      <Project>{fedebdcf-9c36-4c27-9385-d6fbcebed7f2}</Project>
+      <Project>{ce7923a2-fccc-47e7-807e-4ec6d7a4f42d}</Project>
       <Name>TeamBuilder.Models</Name>
     </ProjectReference>
   </ItemGroup>

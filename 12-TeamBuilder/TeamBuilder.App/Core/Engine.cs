@@ -12,6 +12,8 @@
 
         public void Run()
         {
+            Console.WriteLine("Enter commands: "); // 
+
             while (true)
             {
                 try

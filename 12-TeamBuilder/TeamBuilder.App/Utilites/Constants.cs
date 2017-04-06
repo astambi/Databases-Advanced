@@ -14,6 +14,10 @@
 
         public const string DateTimeFormat = "dd/MM/yyyy HH:mm";
 
+        public const int MaxTeamNameLength = 25;
+        public const int ExactAcronymLength = 3;
+        public const int MaxTeamDescriptionLength = 32;
+
         public static class ErrorMessages
         {
             // Common error messages.
@@ -50,10 +54,14 @@
             public const string UsernameIsTaken = "Username {0} is already taken!";
             public const string UserOrPasswordIsInvalid = "Invalid username or password!";
             public const string InvalidDateFormat = "Please insert the dates in format: [dd/MM/yyyy HH:mm]!";
-
+            public const string StartDateBeforeEndDate = "Start date should be before end date";
+            
             // Team error messages.
+            public const string InvalidTeamName = "Team name {0} not valid!";               // optional
+            public const string InvalidTeamDescription = "Team description {0} not valid!"; // optional
             public const string InvalidAcronym = "Acronym {0} not valid!";
             public const string TeamExists = "Team {0} exists!";
+
         }
     }
 }

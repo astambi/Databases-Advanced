@@ -12,7 +12,7 @@
 
         public void Run()
         {
-            Console.WriteLine("Enter commands: "); 
+            Console.WriteLine("Enter commands: ");
 
             while (true)
             {
@@ -21,11 +21,11 @@
                     string input = Console.ReadLine();
                     string output = this.commandDispatcher.Dispatch(input);
 
-                    Console.WriteLine(output);
+                    Console.WriteLine("   " + output); // for readability
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.GetBaseException().Message);
+                    Console.WriteLine("   " + e.GetBaseException().Message); // for readability
                 }
             }
         }

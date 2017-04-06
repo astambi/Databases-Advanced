@@ -42,14 +42,29 @@
                     break;
 
                 // Advanced Logic
-
-
-
-
-
+                case "CreateEvent":
+                    CreateEventCommand createEvent = new CreateEventCommand();
+                    result = createEvent.Execute(inputArgs);
+                    break;
+                case "CreateTeam":
+                    CreateTeamCommand createTeam = new CreateTeamCommand();
+                    result = createTeam.Execute(inputArgs);
+                    break;
+                case "InviteToTeam":
+                    InviteToTeamCommand inviteToTeam = new InviteToTeamCommand();
+                    result = inviteToTeam.Execute(inputArgs);
+                    break;
+                case "AcceptInvite":
+                    AcceptInviteCommand acceptInvite = new AcceptInviteCommand();
+                    result = acceptInvite.Execute(inputArgs);
+                    break;
 
 
                 // TODO
+
+
+
+
 
                 // Basic Logic
                 default:

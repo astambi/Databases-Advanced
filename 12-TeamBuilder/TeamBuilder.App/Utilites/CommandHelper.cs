@@ -18,7 +18,8 @@
         {
             using (TeamBuilderContext context = new TeamBuilderContext())
             {
-                return context.Users.Any(u => u.Username == username && u.IsDeleted == false);
+                return context.Users.Any(u => u.Username == username &&
+                                              u.IsDeleted == false);
             }
         }
 
@@ -26,8 +27,9 @@
         {
             using (TeamBuilderContext context = new TeamBuilderContext())
             {
-                return context.Invitations
-                    .Any(i => i.Team.Name == teamName && i.InvitedUserId == user.Id && i.IsActive);
+                return context.Invitations.Any(i => i.Team.Name == teamName &&
+                                                    i.InvitedUserId == user.Id &&
+                                                    i.IsActive);
             }
         }
 
@@ -35,14 +37,16 @@
         {
             using (TeamBuilderContext context = new TeamBuilderContext())
             {
-                return context.Teams.Any(t => t.Name == teamName && t.CreatorId == user.Id);
+                return context.Teams.Any(t => t.Name == teamName &&
+                                              t.CreatorId == user.Id);
             }
         }
         public static bool IsUserCreatorOfEvent(string eventName, User user)
         {
             using (TeamBuilderContext context = new TeamBuilderContext())
             {
-                return context.Events.Any(e => e.Name == eventName && e.CreatorId == user.Id);
+                return context.Events.Any(e => e.Name == eventName &&
+                                               e.CreatorId == user.Id);
             }
         }
 
@@ -50,8 +54,8 @@
         {
             using (TeamBuilderContext context = new TeamBuilderContext())
             {
-                return context.Teams
-                    .Any(t => t.Name == teamName && t.Members.Any(m => m.Username == username));
+                return context.Teams.Any(t => t.Name == teamName &&
+                                              t.Members.Any(m => m.Username == username));
             }
         }
 

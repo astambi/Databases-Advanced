@@ -41,6 +41,7 @@
                 .WithRequired(i => i.InvitedUser)
                 .WillCascadeOnDelete(false);
 
+            // NB!!! do not duplicate in TeamConfig to avoid constructing an incorrect mapping tables!
             this.HasMany(u => u.Teams)                  // many-to-many User-Team
                 .WithMany(t => t.Members)
                 .Map(ut =>

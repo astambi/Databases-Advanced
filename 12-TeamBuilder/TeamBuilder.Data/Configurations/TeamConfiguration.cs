@@ -27,30 +27,9 @@
                 .HasMaxLength(3);
 
             // Navigation properties
-            this.HasMany(t => t.Members)            // many-to-many User-Team
-                .WithMany(u => u.Teams)
-                .Map(ut =>
-                {
-                    ut.MapLeftKey("UserId");
-                    ut.MapRightKey("TeamId");
-                    ut.ToTable("UserTeams");
-                });
-
-            this.HasRequired(t => t.Creator)        // one-to-many User-CreatedTeam
-                .WithMany(u => u.CreatedTeams);
-
             this.HasMany(t => t.Invitations)        // one-to-many Team-Invitation
                 .WithRequired(i => i.Team)
-                .WillCascadeOnDelete(false);
-
-            this.HasMany(t => t.AttendedEvents)     // many-to-many Event-ParticipatingTeam
-                .WithMany(e => e.ParticipatingTeams)
-                .Map(et =>
-                {
-                    et.MapLeftKey("EventId");
-                    et.MapRightKey("TeamId");
-                    et.ToTable("EventTeams");
-                });
+                .WillCascadeOnDelete(false);  
         }
     }
 }

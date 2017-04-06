@@ -22,7 +22,7 @@ namespace TeamBuilder.Data
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new EventConfiguration());
             modelBuilder.Configurations.Add(new TeamConfiguration());
-            modelBuilder.Configurations.Add(new InvitationConfiguration());
+            //modelBuilder.Configurations.Add(new InvitationConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

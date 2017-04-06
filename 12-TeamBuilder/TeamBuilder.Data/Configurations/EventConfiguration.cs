@@ -23,9 +23,6 @@
                 .HasMaxLength(250);
 
             // Navigation properties
-            this.HasRequired(e => e.Creator)            // one-to-many User-CreateTeam
-                .WithMany(u => u.CreatedEvents);
-
             this.HasMany(e => e.ParticipatingTeams)     // many-to-many Event-ParticipatingTeam
                 .WithMany(t => t.AttendedEvents)
                 .Map(et =>

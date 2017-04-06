@@ -14,7 +14,7 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Acrinym { get; set; }
+        public string Acronym { get; set; }
         public int CreatorId { get; set; }
         public virtual User Creator { get; set; }
 

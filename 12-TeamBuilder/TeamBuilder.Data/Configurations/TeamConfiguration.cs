@@ -21,7 +21,7 @@
             this.Property(t => t.Description)
                 .HasMaxLength(32);
 
-            this.Property(t => t.Acrinym)
+            this.Property(t => t.Acronym)
                 .IsRequired()
                 .IsFixedLength()
                 .HasMaxLength(3);

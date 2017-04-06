@@ -64,7 +64,7 @@
                 Team team = new Team()
                 {
                     Name = teamName,
-                    Acrinym = acronym,
+                    Acronym = acronym,
                     Description = description,
                     CreatorId = AuthenticationManager.GetCurrentUser().Id // current user
                 };

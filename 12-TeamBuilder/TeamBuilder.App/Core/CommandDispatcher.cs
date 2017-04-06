@@ -58,13 +58,33 @@
                     AcceptInviteCommand acceptInvite = new AcceptInviteCommand();
                     result = acceptInvite.Execute(inputArgs);
                     break;
-
+                case "DeclineInvite":
+                    DeclineInviteCommand declineInvite = new DeclineInviteCommand();
+                    result = declineInvite.Execute(inputArgs);
+                    break;
+                case "KickMember":
+                    KickMemberCommand kickMember = new KickMemberCommand();
+                    result = kickMember.Execute(inputArgs);
+                    break;
 
                 // TODO
+                case "Disband":
+                    DisbandTeamCommand disband = new DisbandTeamCommand();
+                    result = disband.Execute(inputArgs);
+                    break;
 
-
-
-
+                case "AddTeamTo":
+                    AddTeamToCommand addTeamTo = new AddTeamToCommand();
+                    result = addTeamTo.Execute(inputArgs);
+                    break;
+                case "ShowEvent":
+                    ShowEventCommand showEvent = new ShowEventCommand();
+                    result = showEvent.Execute(inputArgs);
+                    break;
+                case "ShowTeam":
+                    ShowTeamCommand showTeam = new ShowTeamCommand();
+                    result = showTeam.Execute(inputArgs);
+                    break;
 
                 // Basic Logic
                 default:

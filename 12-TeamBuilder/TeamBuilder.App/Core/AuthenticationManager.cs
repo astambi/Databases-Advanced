@@ -15,7 +15,6 @@
 
         public static void Logout()
         {
-            Authorize();
             currentUser = null;
         }
 
@@ -34,7 +33,6 @@
 
         public static User GetCurrentUser()
         {
-            Authorize();
             return currentUser;
         }
     }

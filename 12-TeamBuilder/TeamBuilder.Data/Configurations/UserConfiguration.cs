@@ -14,8 +14,9 @@
                 .IsRequired()
                 .HasMaxLength(25)
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,
-                    new IndexAnnotation(new IndexAttribute("IX_Users_Username", 1)
-                    { IsUnique = true })); // unique
+                    new IndexAnnotation(
+                        new IndexAttribute("IX_Users_Username", 1)
+                        { IsUnique = true }));          // unique
 
             this.Property(u => u.FirstName)
                 .HasMaxLength(25);

@@ -12,8 +12,14 @@
             // Validate arguments count
             Check.CheckLength(0, inputArgs);
 
+            // Check if user is already authenticated, if not => Login first
+            AuthenticationManager.Authorize();
+
+            // Delete user
             User currentUser = AuthenticationManager.GetCurrentUser();
             this.DeleteUser(currentUser);
+
+            // Logout
             AuthenticationManager.Logout();
 
             return $"User {currentUser.Username} was deleted successfully!";
@@ -23,17 +29,14 @@
         {
             using (TeamBuilderContext context = new TeamBuilderContext())
             {
-                // Get user and set status to deleted
                 context.Users
-                    .FirstOrDefault(u => u.Username == user.Username)
+                    .FirstOrDefault(u => u.Username == user.Username) // get user
                     .IsDeleted = true;
-
-                // OR Attach user and set status to deleted //
-
-                //context.Users.Attach(user); // attach user
-                //user.IsDeleted = true;
-
                 context.SaveChanges();
+
+                //context.Users.Attach(user); // OR attach user
+                //user.IsDeleted = true;
+                //context.SaveChanges();
             }
         }
     }

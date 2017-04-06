@@ -6,7 +6,7 @@
     using System.Linq;
     using Utilites;
 
-    class RegisterCommand
+    class RegisterUserCommand
     {
         // RegisterUser <username> <password> <repeat-password> <firstName> <lastName> <age> <gender>
         public string Execute(string[] inputArgs)

@@ -1,7 +1,6 @@
 ﻿namespace TeamBuilder.App.Core.Commands
 {
     using Models;
-    using System;
     using Utilites;
 
     class LogoutCommand
@@ -12,13 +11,14 @@
             // Validate arguments count
             Check.CheckLength(0, inputArgs);
 
-            // Check if user is already authenticated
+            // Check if user is already authenticated, if not => Login first
             AuthenticationManager.Authorize();
 
-            User user = AuthenticationManager.GetCurrentUser();
+            // Logout
+            User currentUser = AuthenticationManager.GetCurrentUser();
             AuthenticationManager.Logout();
 
-            return $"User {user.Username} successfully logged out!";
+            return $"User {currentUser.Username} successfully logged out!";
         }
     }
 }

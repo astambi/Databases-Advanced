@@ -6,10 +6,10 @@
     class ExitCommand
     {
         // Exit
-        public string Execute(string[] args)
+        public string Execute(string[] inputArgs)
         {
-            Check.CheckLength(0, args);
-            Console.WriteLine("Bye!");
+            // Validate arguments count
+            Check.CheckLength(0, inputArgs);
 
             Environment.Exit(0);
 

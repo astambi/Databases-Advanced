@@ -19,8 +19,9 @@
 
             switch (commandName)
             {
+                // Basic Logic
                 case "RegisterUser":
-                    RegisterCommand register = new RegisterCommand();
+                    RegisterUserCommand register = new RegisterUserCommand();
                     result = register.Execute(inputArgs);
                     break;
                 case "Login":
@@ -39,6 +40,18 @@
                     ExitCommand exit = new ExitCommand();
                     result = exit.Execute(inputArgs);
                     break;
+
+                // Advanced Logic
+
+
+
+
+
+
+
+                // TODO
+
+                // Basic Logic
                 default:
                     throw new NotSupportedException($"Command {commandName} not supported!");
             }

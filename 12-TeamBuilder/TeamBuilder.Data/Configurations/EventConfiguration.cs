@@ -13,8 +13,9 @@
             this.Property(e => e.Name)
                 .IsRequired()
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,
-                    new IndexAnnotation(new IndexAttribute("IX_Events_Name", 1)
-                    { IsUnique = true }))
+                    new IndexAnnotation(
+                        new IndexAttribute("IX_Events_Name", 1)
+                        { IsUnique = true }))
                 .HasMaxLength(25);
 
             this.Property(e => e.Description)

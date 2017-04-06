@@ -23,13 +23,14 @@
                 throw new InvalidOperationException(Constants.ErrorMessages.LogoutFirst);
             }
 
-            // Validate user
+            // Validate user by username & password
             User user = this.GetUserByCredentials(username, password);
             if (user == null)
             {
                 throw new ArgumentException(string.Format(Constants.ErrorMessages.UserOrPasswordIsInvalid));
             }
 
+            // Login
             AuthenticationManager.Login(user);
 
             return $"User {username} successfully logged in!";

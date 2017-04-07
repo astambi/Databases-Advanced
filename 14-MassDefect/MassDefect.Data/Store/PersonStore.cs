@@ -4,6 +4,7 @@
     using Models.DTO;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public static class PersonStore
     {
@@ -41,6 +42,21 @@
                 }
 
                 context.SaveChanges();
+            }
+        }
+
+        public static List<PersonDto> GetPeopleNotVictimsOfAnomalies()
+        {
+            using (MassDefectContext context = new MassDefectContext())
+            {
+                return context.Persons
+                    .Where(p => p.Anomalies.Count() == 0)
+                    .Select(p => new PersonDto
+                    {
+                        Name = p.Name,
+                        HomePlanet = p.HomePlanet.Name
+                    })
+                    .ToList();
             }
         }
     }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassDefect.Client", "MassDe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassDefect.Import", "MassDefect.Import\MassDefect.Import.csproj", "{B6CCDF66-A225-44B5-9961-4978A480FED1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MassDefect.Export", "MassDefect.Export\MassDefect.Export.csproj", "{714984A9-251C-4AAB-BD36-E64255B3E728}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B6CCDF66-A225-44B5-9961-4978A480FED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6CCDF66-A225-44B5-9961-4978A480FED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6CCDF66-A225-44B5-9961-4978A480FED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{714984A9-251C-4AAB-BD36-E64255B3E728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{714984A9-251C-4AAB-BD36-E64255B3E728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714984A9-251C-4AAB-BD36-E64255B3E728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{714984A9-251C-4AAB-BD36-E64255B3E728}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

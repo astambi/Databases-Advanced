@@ -4,6 +4,7 @@
     using Models.DTO;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public static class AnomalyStore
     {
@@ -103,9 +104,9 @@
 
                     // Validate Anomaly
                     Anomaly anomalyEntity = CommandHelpers.GetAnomalyByPlanetsId(context, originPlanet.Id, teleportPlanet.Id);
-                    
+
                     // Create new anomaly if non-existent
-                    if (anomalyEntity == null)  
+                    if (anomalyEntity == null)
                     {
                         anomalyEntity = new Anomaly()
                         {
@@ -145,5 +146,42 @@
                 context.SaveChanges();
             }
         }
+
+        public static List<AnomalyExportDto> GetAnomalyWithMaxVictims()
+        {
+            using (MassDefectContext context = new MassDefectContext())
+            {
+                return context.Anomalies
+                    .Where(a => a.Victims.Count == context.Anomalies.Max(x => x.Victims.Count))
+                    //.OrderByDescending(a => a.Victims.Count)
+                    //.Take(1)
+                    .Select(a => new AnomalyExportDto
+                    {
+                        Id = a.Id,
+                        OriginPlanet = a.OriginPlanet.Name,
+                        TeleportPlanet = a.TeleportPlanet.Name,
+                        VictimsCount = a.Victims.Count
+                    })
+                    .ToList();
+            }
+        }
+
+        public static List<AnomaliesWithVictimsExportDto> GetAnomaliesWithVictims()
+        {
+            using (MassDefectContext context = new MassDefectContext())
+            {
+                return context.Anomalies
+                    .Select(a => new AnomaliesWithVictimsExportDto
+                    {
+                        Id = a.Id,
+                        OriginPlanet = a.OriginPlanet.Name,
+                        TeleportPlanet = a.TeleportPlanet.Name,
+                        Victims = a.Victims.Select(v => v.Name).ToList()
+                    })
+                    .OrderBy(a => a.Id)
+                    .ToList();
+            }
+        }
+
     }
 }

@@ -4,6 +4,7 @@
     using Models.DTO;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public static class PlanetStore
     {
@@ -44,6 +45,17 @@
 
                 context.SaveChanges();
             }
-        }        
+        }
+
+        public static List<string> GetPlanetsWithoutOriginAnomalies()
+        {
+            using (MassDefectContext context = new MassDefectContext())
+            {
+                return context.Planets
+                    .Where(p => p.OriginatingAnomalies.Count == 0)
+                    .Select(p => p.Name)
+                    .ToList(); // NB! result from query, otherwise just query!
+            }
+        }
     }
 }

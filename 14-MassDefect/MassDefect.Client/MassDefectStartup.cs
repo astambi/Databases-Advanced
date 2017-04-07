@@ -1,7 +1,6 @@
 ﻿namespace MassDefect.Client
 {
     using Data;
-    using Import;
 
     class MassDefectStartup
     {
@@ -13,8 +12,7 @@
              * from Data/bin/Debug to Client/bin/Debug
              */
 
-            //Utility.InitializeDB();
-            
+            Utility.InitializeDB();
         }
     }
 }

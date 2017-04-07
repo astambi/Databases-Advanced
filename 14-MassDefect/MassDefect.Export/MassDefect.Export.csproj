@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1329904-707A-4559-90B1-C287AB337AD9}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{714984A9-251C-4AAB-BD36-E64255B3E728}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MassDefect.Models</RootNamespace>
-    <AssemblyName>MassDefect.Models</AssemblyName>
+    <RootNamespace>MassDefect.Export</RootNamespace>
+    <AssemblyName>MassDefect.Export</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,8 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,21 +47,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Anomaly.cs" />
-    <Compile Include="DTO\AnomaliesWithVictimsExportDto.cs" />
-    <Compile Include="DTO\AnomalyDto.cs" />
-    <Compile Include="DTO\AnomalyExportDto.cs" />
-    <Compile Include="DTO\AnomalyVictimDto.cs" />
-    <Compile Include="DTO\AnomalyWithVictimDto.cs" />
-    <Compile Include="DTO\PersonDto.cs" />
-    <Compile Include="DTO\PlanetDto.cs" />
-    <Compile Include="DTO\SolarSystemDto.cs" />
-    <Compile Include="DTO\StarDto.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="Planet.cs" />
+    <Compile Include="ExportStartup.cs" />
+    <Compile Include="JsonExport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SolarSystem.cs" />
-    <Compile Include="Star.cs" />
+    <Compile Include="XmlExport.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Export\anomaly.json" />
+    <None Include="Export\people.json" />
+    <None Include="Export\planets.json" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MassDefect.Data\MassDefect.Data.csproj">
+      <Project>{2ade05ac-298a-4697-b371-4aac90832816}</Project>
+      <Name>MassDefect.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MassDefect.Models\MassDefect.Models.csproj">
+      <Project>{a1329904-707a-4559-90b1-c287ab337ad9}</Project>
+      <Name>MassDefect.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Export\anomalies.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

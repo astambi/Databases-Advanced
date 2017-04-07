@@ -66,13 +66,10 @@
                     KickMemberCommand kickMember = new KickMemberCommand();
                     result = kickMember.Execute(inputArgs);
                     break;
-
-                // TODO
                 case "Disband":
                     DisbandTeamCommand disband = new DisbandTeamCommand();
                     result = disband.Execute(inputArgs);
                     break;
-
                 case "AddTeamTo":
                     AddTeamToCommand addTeamTo = new AddTeamToCommand();
                     result = addTeamTo.Execute(inputArgs);
@@ -84,6 +81,22 @@
                 case "ShowTeam":
                     ShowTeamCommand showTeam = new ShowTeamCommand();
                     result = showTeam.Execute(inputArgs);
+                    break;
+
+                // Import Data
+                case "ImportUsers":
+                    ImportUsersCommand importUsers = new ImportUsersCommand();
+                    result = importUsers.Execute(inputArgs);
+                    break;
+                case "ImportTeams":
+                    ImportTeamsCommand importTeams = new ImportTeamsCommand();
+                    result = importTeams.Execute(inputArgs);
+                    break;
+                
+                // Export Data
+                case "ExportTeam":
+                    ExportTeamCommand exportTeam = new ExportTeamCommand();
+                    result = exportTeam.Execute(inputArgs);
                     break;
 
                 // Basic Logic

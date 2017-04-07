@@ -35,7 +35,7 @@
 
                 string result = $"{team.Name} {team.Acronym}\nMembers:";
                 if (members.Count() > 0)
-                    result += $"\n-{string.Join("\n-", members)}";
+                    result += $"\n--{string.Join("\n--", members)}";
 
                 return result;
             }

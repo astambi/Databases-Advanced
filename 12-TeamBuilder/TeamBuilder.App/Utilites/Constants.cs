@@ -62,6 +62,9 @@
             public const string InvalidAcronym = "Acronym {0} not valid!";
             public const string TeamExists = "Team {0} exists!";
 
+            // Import Data
+            public const string FileNotFound = "Path {0} is not valid!";
+            public const string InvalidXmlFormat = "Invalid Xml format!";
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace TeamBuilder.Models
 {
+    using System;
     using System.Collections.Generic;
 
     public class Team
@@ -21,5 +22,10 @@
         public virtual ICollection<User> Members { get; set; }
         public virtual ICollection<Event> AttendedEvents { get; set; }
         public virtual ICollection<Invitation> Invitations { get; set; }
+
+        public object Select(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -45,32 +45,19 @@
             {
                 Team team = context.Teams.FirstOrDefault(t => t.Name == teamName);
 
-                // TODO
+                // Delete all team invitations (active or inactive)
+                context.Invitations.RemoveRange(team.Invitations);
+                context.SaveChanges();
 
-                Team deletedTeam = context.Teams.FirstOrDefault(t => t.Name == "DeletedTeam");
-                if (deletedTeam == null)
+                // Remove all team members from team
+                var members = team.Members;
+                foreach (User member in members)
                 {
-                    context.Teams.Add(new Team() { Name = "DeletedTeam", Acronym = "DEL" });
-                    context.SaveChanges();
-                    deletedTeam = context.Teams.FirstOrDefault(t => t.Name == "DeletedTeam");
-                }
-
-                // Move invitations to team to a deletedTeam
-                var invitations = team.Invitations;
-                foreach (var invite in invitations)
-                {
-                    invite.TeamId = deletedTeam.Id;
+                    member.Teams.Remove(team);
                 }
                 context.SaveChanges();
 
-                // Remove team members
-                team.Members.ToList()
-                    .ForEach(m => team.Members.Remove(m));
-                context.SaveChanges();
-
-                // Delete team events
-                
-                // Remove team
+                // Delete team
                 context.Teams.Remove(team);
                 context.SaveChanges();
             }
